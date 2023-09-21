@@ -46,7 +46,7 @@ public class Main {
 
         int min = seq[0];
         for (int i = 0; i < n; i++) {
-            if (seq[i] < min)
+            if (seq[i] < min && seq[i] != 1)
                 min = seq[i];
         }
 
