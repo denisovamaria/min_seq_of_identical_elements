@@ -3,15 +3,25 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner in;
+        Scanner in = null;
+        File file = new File("Input.txt");
+        if (file.length() == 0) {
+            System.out.println("File is empty");
+        }
         try {
             in = new Scanner(new File("input.txt"));
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+        } catch (IOException e) {
+            System.out.println("Error keyboard input");
         }
-        int n = in.nextInt();
-        int m = in.nextInt();
 
+        int n = 0;
+        if (in != null) {
+            n = in.nextInt();
+        }
+        int m = 0;
+        if (in != null) {
+            m = in.nextInt();
+        }
         int[][] matrix = new int[n][m];
 
         for (int i = 0; i < n; i++) {
@@ -34,9 +44,9 @@ public class Main {
             }
         }
 
-        int min = 0;
+        int min = seq[0];
         for (int i = 0; i < n; i++) {
-            if (seq[i] > min)
+            if (seq[i] < min)
                 min = seq[i];
         }
 
